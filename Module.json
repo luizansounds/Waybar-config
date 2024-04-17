@@ -66,7 +66,7 @@
 //========================== LAUNCHER MODULES ========================//
 
   "custom/launcher":{
-    "format":" 󰣛 Applications",
+    "format":" 󰣛",
     "on-click": "~/.local/lu-dotfiles/rofi-custom/Launcher/launcher.sh",
     "on-click-right": "~/lu-dotfiles/.config/rofi/scripts/extra/Utils",
     "on-click-middle": "killall waybar && waybar"
@@ -123,7 +123,41 @@
   "on-click-middle": "playerctl loop track",
 },
 
-//========================== DEFAULT MODULES ========================//
+//========================== DEFAULT MODULES ========================// 
+
+"keyboard-state": {
+  "numlock": true,
+  "capslock": true,
+  "format": "{name} {icon}",
+  "format-icons": {
+      "locked": "",
+      "unlocked": ""
+  }
+},
+
+"cava": {
+        //"cava_config": "~/.config/cava/cava.conf",//
+        "framerate": 15,
+        "autosens": 1,
+        //"sensitivity": 10,//
+        "bars": 15,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 13000,
+        "method": "pulse",
+        "source": "auto",
+        "stereo": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": false,
+        "waves": false,
+        "noise_reduction": 0.77,
+        "input_delay": 1,
+        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+                   "on-click-right": "mode"
+                   }
+    },
+
 "sway/workspaces": {
   "format": "{icon}",
   "on-click": "activate",
@@ -178,7 +212,7 @@
     },
 
 "battery": {
-        "on-click": "~/.local/lu-dotfiles/rofi-custom/Launcher/powermenu.sh",
+        "on-click": "~/.local/lu-dotfiles/.config/sway/scripts/Launcher/powermenu.sh",
         "states": {
             "good": 95,
             "warning": 30,
@@ -193,10 +227,30 @@
     },
 
 "clock": {
-        //"timezone": "UTC",
-        "format": "{:%I:%M %p}",
-        "on-click": "~/lu-dotfiles/.config/rofi/scripts/extra/playerctl",
-    },
+      "format": "{:%H:%M}  ",
+      "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+                  "mode"          : "year",
+                  "mode-mon-col"  : 3,
+                  "weeks-pos"     : "right",
+                  "on-scroll"     : 1,
+                  "format": {
+                            "months":     "<span color='#ffead3'><b>{}</b></span>",
+                            "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                            "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                            "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                            "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                            }
+                  },
+      "actions":  {
+                  "on-click-right": "mode",
+                  "on-click-forward": "tz_up",
+                  "on-click-backward": "tz_down",
+                  "on-scroll-up": "shift_up",
+                  "on-scroll-down": "shift_down"
+                  }
+  },
 
 
 "pulseaudio":{
@@ -214,8 +268,8 @@
   },
   "scroll-step": 1,
   "on-click": "pamixer -t",
-  "on-click-middle": "sh ~/.local/lu-dotfiles/components/toggles/easyeffects-scratchpad",
-  "on-click-right": "sh ~/.local/lu-dotfiles/components/toggles/pavucontrol-scratchpad",
+  "on-click-middle": "sh ~/.local/lu-dotfiles/.config/waybar/easyeffects-scratchpad",
+  "on-click-right": "sh ~/.local/lu-dotfiles/.config/waybar/pavucontrol-scratchpad",
   "ignored-sinks": ["Easy Effects Sink"]
     },
 
