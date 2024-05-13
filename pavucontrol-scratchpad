@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 if pgrep "pavucontrol";
     then 
-        swaymsg [app_id="pavucontrol"] scratchpad show, resize set width 80 ppt height  70 ppt
+        swaymsg [app_id="pavucontrol"] scratchpad show, resize set width 80 ppt height  70 ppt, move window position center
     else
-        pavucontrol && swaymsg [app_id="pavucontrol"] scratchpad show, resize set width 80 ppt height  70 ppt
+        pavucontrol && swaymsg [app_id="pavucontrol"] scratchpad show, resize set width 80 ppt height  70 ppt, move window position center
 fi
